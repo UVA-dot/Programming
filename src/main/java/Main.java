@@ -1,15 +1,12 @@
-import commands.Command;
-import commands.Commands;
+import managers.Reader;
+import managers.commands.Command;
+import managers.CommandManager;
 import models.Dragon;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
-import models.Dragon;
-import models.DragonCollection;
+import managers.CollectionManager;
 
 public class Main {
     public static void main(String[] args){
@@ -17,11 +14,12 @@ public class Main {
             System.out.println("Введите путь к файлу csv");
         }
         else{
+            CollectionManager collectionManager = CollectionManager.getData();
             LinkedList<Dragon> result = new LinkedList<>();
             String FilePath = args[0];
             Reader fileReader = new Reader(FilePath);
             result = fileReader.readCollection();
-            DragonCollection.setDragons(result);
+            collectionManager.setCollection(result);
             System.out.println("\nПожалуйста введите команду");
             commandloop();
         }
@@ -29,6 +27,7 @@ public class Main {
     private static void commandloop(){
         Scanner scanner = new Scanner(System.in);
         String curcmd;
+        CommandManager commandManager = CommandManager.getCommandManager();
         while(scanner.hasNext()){
             String line = scanner.nextLine().trim();
             if(!line.equals("")){
@@ -36,12 +35,13 @@ public class Main {
                 else{
                     String[] input = line.split(" ");
                     curcmd = input[0];
-                    Command cmd = Commands.getCommand(curcmd);
+                    Command cmd = commandManager.getCommand(curcmd);
                     if(cmd == null){
                         System.out.println("Команда не найдена");
-                        Commands.getCommand("help").execute();
+                        commandManager.getCommand("help").execute();
                     }
                     else{
+                        commandManager.updateHistory(cmd);
                         boolean isArg = false;
                         String args = null;
                         try{

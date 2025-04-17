@@ -1,6 +1,6 @@
-package commands;
+package managers.commands;
 
-import models.DragonCollection;
+import managers.CollectionManager;
 
 public class Info extends Command {
     public Info(){
@@ -8,6 +8,7 @@ public class Info extends Command {
     }
     @Override
     public void execute(){
-        DragonCollection.printInfo();
+        CollectionManager collectionManager = CollectionManager.getData();
+        collectionManager.printInfo();
     }
 }

@@ -1,16 +1,17 @@
-package commands;
+package managers.commands;
 
-import models.DragonCollection;
+import managers.CollectionManager;
 
-public class Head extends Command{
+public class Head extends Command {
     public Head(){
         super("Head","Выводит первый элемент коллекции");
     }
     @Override
     public void execute(){
-        if(DragonCollection.getData() != null) {
+        CollectionManager collectionManager = CollectionManager.getData();
+        if(collectionManager.getCollection() != null) {
             System.out.println("1-ый элемент коллекции {");
-            DragonCollection.getData().getFirst().print();
+            System.out.println(collectionManager.getCollection().getFirst().toString());
             System.out.println("}");
         }
         else{

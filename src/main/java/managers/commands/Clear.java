@@ -1,15 +1,16 @@
-package commands;
+package managers.commands;
 
-import models.DragonCollection;
+import managers.CollectionManager;
 
-public class Clear extends Command{
+public class Clear extends Command {
     public Clear(){
         super("Clear", "Очистить коллекцию");
 
     }
     @Override
     public void execute(){
-        DragonCollection.clear();
+        CollectionManager collectionManager = CollectionManager.getData();
+        collectionManager.clear();
         System.out.println("Коллекция очищена успешно!\n");
     }
 }

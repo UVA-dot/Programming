@@ -1,13 +1,14 @@
-package commands;
+package managers.commands;
 
-import models.DragonCollection;
+import managers.CollectionManager;
 
-public class Show extends Command{
+public class Show extends Command {
     public Show(){
         super("Show","Вывести все элементы коллекции в строковом представлении");
     }
     @Override
     public void execute(){
-        DragonCollection.print();
+        CollectionManager collectionManager = CollectionManager.getData();
+        collectionManager.print();
     }
 }

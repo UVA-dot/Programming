@@ -1,7 +1,6 @@
-package commands;
+package managers.commands;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public abstract class Command {
     private String name;

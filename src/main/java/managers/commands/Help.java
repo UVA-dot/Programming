@@ -1,4 +1,7 @@
-package commands;
+package managers.commands;
+
+import managers.CommandManager;
+import managers.commands.Command;
 
 public class Help extends Command {
     public Help(){
@@ -7,7 +10,8 @@ public class Help extends Command {
     @Override
     public void execute(){
         System.out.println("Список доступных команд:");
-        for(Command cmd: Commands.getCommands().values()){
+        CommandManager commandManager = CommandManager.getCommandManager();
+        for(Command cmd: commandManager.getCommands().values()){
             System.out.println(cmd.getName() + ": " + cmd.getDescription());
         }
     }

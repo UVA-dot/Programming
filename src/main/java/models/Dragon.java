@@ -105,7 +105,8 @@ public class Dragon {
     public void setWeight(long weight) {
         this.weight = weight;
     }
-    public void print(){
-        System.out.println("id: " + id + "\nname: " + name + "\ncoordinates: " + coordinates.getX() + ", " + coordinates.getY() + "\ncreationDate: " + creationDate + "\nage: " + age + "\nweight: " + weight + "\ntype: " + type + "\ndragoncharacter: " + character + "\ndragonhead: " + head.getSize());
+    @Override
+    public String toString(){
+        return ("id: " + id + "\nname: " + name + "\ncoordinates: " + coordinates.getX() + ", " + coordinates.getY() + "\ncreationDate: " + creationDate + "\nage: " + age + "\nweight: " + weight + "\ntype: " + type + "\ndragoncharacter: " + character + "\ndragonhead: " + head.getSize());
     }
 }

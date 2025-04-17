@@ -1,21 +1,21 @@
-package commands;
+package managers.commands;
 
 import models.Dragon;
-import models.DragonCharacter;
-import models.DragonCollection;
+import managers.CollectionManager;
 
-public class Remove_head extends  Command{
+public class Remove_head extends Command {
     public Remove_head(){
         super("Remove_head", "Вывести первый элемент коллекции и удалить его");
     }
     @Override
     public void execute(){
-        if(DragonCollection.getData() != null) {
+        CollectionManager collectionManager = CollectionManager.getData();
+        if(CollectionManager.getData() != null) {
             System.out.println("1-ый элемент коллекции {");
-            DragonCollection.getData().getFirst().print();
-            Dragon dragon = DragonCollection.getData().getFirst();
+            System.out.println(collectionManager.getCollection().getFirst().toString());
+            Dragon dragon = collectionManager.getCollection().getFirst();
             System.out.println("}");
-            DragonCollection.remove(dragon);
+            collectionManager.remove(dragon);
             System.out.println("Успешно удалён");
         }
         else {

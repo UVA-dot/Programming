@@ -1,22 +1,20 @@
-package commands;
+package managers.commands;
 
 import models.Dragon;
-import models.DragonCharacter;
-import models.DragonCollection;
+import managers.CollectionManager;
 
-import java.text.spi.NumberFormatProvider;
-
-public class Remove_by_id extends Command{
+public class Remove_by_id extends Command {
     public Remove_by_id(){
         super("Remove_by_id", "Удаляет элемент по заданному id");
     }
     @Override
     public void execute(String data){
+        CollectionManager collectionManager = CollectionManager.getData();
         try{
             Integer id = Integer.parseInt(data);
-            Dragon dragon = DragonCollection.search(id);
+            Dragon dragon = collectionManager.search(id);
             if(dragon != null) {
-                DragonCollection.remove(dragon);
+                collectionManager.remove(dragon);
                 System.out.println("Элемент с id = " + id + " успешно удалён!");
             }
         }

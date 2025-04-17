@@ -1,3 +1,6 @@
+package managers;
+
+import interfaces.Readable;
 import models.*;
 
 import java.time.LocalDateTime;
@@ -8,12 +11,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.io.IOException;
 import java.io.FileReader;
-public class Reader {
+public class Reader implements Readable {
     private String name;
     Reader(){
         this.name = "";
     }
-    Reader(String name){
+    public Reader(String name){
         this.name = name;
     }
     public void setname(String name){

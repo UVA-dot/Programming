@@ -165,12 +165,17 @@ public class CollectionManager implements Collectionable<Dragon> {
         }
         while(true){
             System.out.println("Введите поле x: ");
-            long x = Long.parseLong(String.valueOf(consoleManager.inputFieldNumber()));
-            if(validator.validatingX(x)){
-                coordinates.setX(x);
-                break;
+            try {
+                long x = Long.parseLong(String.valueOf(consoleManager.inputFieldNumber()));
+                if (validator.validatingX(x)) {
+                    coordinates.setX(x);
+                    break;
+                }
+                System.out.println("Поле должно быть числом, максимальное значение поля 353");
             }
-            System.out.println("Поле должно быть числом, максимальное значение поля 353");
+            catch (NumberFormatException e){
+
+            }
         }
         while(true){
             System.out.println("Введите поле y:");
@@ -193,16 +198,20 @@ public class CollectionManager implements Collectionable<Dragon> {
         }
         while(true){
             System.out.println("Введите поле weight: ");
-            Long weight = Long.parseLong(String.valueOf(consoleManager.inputFieldNumber()));
-            if(validator.validatingWeight(weight)){
-                dragon.setWeight(weight);
-                break;
+            try {
+                Long weight = Long.parseLong(String.valueOf(consoleManager.inputFieldNumber()));
+                if (validator.validatingWeight(weight)) {
+                    dragon.setWeight(weight);
+                    break;
+                }
+                System.out.println("Поле должно быть больше 0");
             }
-            System.out.println("Поле должно быть больше 0");
+            catch (NumberFormatException e){
+            }
         }
         while(true){
             System.out.println("Введите поле type: ");
-            String type = consoleManager.inputFieldString();
+            String type = consoleManager.inputFieldString().toUpperCase();
             if(validator.validatingType(type)){
                 dragon.setType(DragonType.valueOf(type));
                 break;
@@ -211,17 +220,25 @@ public class CollectionManager implements Collectionable<Dragon> {
         }
         while(true){
             System.out.println("Введите поле character: ");
-            String character = consoleManager.inputFieldString();
+            String character = consoleManager.inputFieldString().toUpperCase();
             if(validator.validatingChar(character)){
                 dragon.setCharacter(DragonCharacter.valueOf(character));
                 break;
             }
             System.out.println("Значения поля нет в enum DragonCharacter");
         }
-        System.out.println("Введите поле size");
-        Float size = Float.parseFloat(String.valueOf(consoleManager.inputFieldFloatNumber()));
-        dragonHead.setSize(size);
-        dragon.setHead(dragonHead);
+        while(true) {
+            try {
+                System.out.println("Введите поле size");
+                Float size = Float.parseFloat(String.valueOf(consoleManager.inputFieldNumber()));
+                dragonHead.setSize(size);
+                dragon.setHead(dragonHead);
+                break;
+            }
+            catch (NumberFormatException e){
+                System.out.println("Значение поля должно быть числом");
+            }
+        }
         collection.put(dragon);
         System.out.println("Дракон успешно добавлен в коллекцию!");
     }

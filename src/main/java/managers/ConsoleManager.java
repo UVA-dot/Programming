@@ -29,24 +29,23 @@ public class ConsoleManager implements Console{
     }
     public String inputFieldString(){
         String curField = null;
-        if(scanner.hasNext()){
+        if(scanner.hasNextLine()){
             curField = scanner.nextLine().trim();
         }
         return curField;
     }
     public Integer inputFieldNumber(){
         String curField = null;
-        if(scanner.hasNext()){
-            curField = scanner.nextLine().trim();
+        try {
+            if (scanner.hasNextLine()) {
+                curField = scanner.nextLine().trim();
+            }
+            return Integer.parseInt(curField);
         }
-        return Integer.parseInt(curField);
-    }
-    public Float inputFieldFloatNumber(){
-        String curField = null;
-        if(scanner.hasNext()){
-            curField = scanner.nextLine().trim();
+        catch(NumberFormatException e){
+            System.out.println("Введено не число");
         }
-        return Float.parseFloat(curField);
+        return null;
     }
     @Override
     public void executeConsole(){

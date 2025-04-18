@@ -6,7 +6,7 @@ public abstract class Command {
     private String name;
     private String description;
     protected boolean flagscanner = false;
-    protected Scanner scanner;
+    protected Scanner scanner = new Scanner(System.in);
     public Command(String name, String description){
         this.name = name;
         this.description = description;

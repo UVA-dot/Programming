@@ -10,14 +10,6 @@ public class Max_by_weight extends Command {
     @Override
     public void execute(){
         CollectionManager collectionManager = CollectionManager.getData();
-        Dragon max_weight_dragon = collectionManager.getCollection().getFirst();
-        Long max_weight = collectionManager.getCollection().getFirst().getWeight();
-        for(Dragon dragon: collectionManager.getData().getCollection()){
-            if(dragon.getWeight() > max_weight){
-                max_weight_dragon = dragon;
-                max_weight = dragon.getWeight();
-            }
-        }
-        System.out.println(max_weight_dragon.toString());
+        collectionManager.max_by_weight(collectionManager);
     }
 }

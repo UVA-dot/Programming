@@ -9,13 +9,6 @@ public class Head extends Command {
     @Override
     public void execute(){
         CollectionManager collectionManager = CollectionManager.getData();
-        if(collectionManager.getCollection() != null) {
-            System.out.println("1-ый элемент коллекции {");
-            System.out.println(collectionManager.getCollection().getFirst().toString());
-            System.out.println("}");
-        }
-        else{
-            System.out.println("Коллекция пуста");
-        }
+        collectionManager.head(collectionManager);
     }
 }

@@ -1,5 +1,4 @@
 import managers.*;
-import managers.commands.Command;
 import models.Dragon;
 
 import java.util.LinkedList;
@@ -19,8 +18,9 @@ public class Main {
             System.out.println("Пожалуйста введите команду");
             Scanner scanner = new Scanner(System.in);
             CommandManager commandManager = CommandManager.getCommandManager();
-            ConsoleManager consoleManager = new ConsoleManager(scanner, commandManager);
-            consoleManager.execute();
+            Validator validator = new Validator();
+            ConsoleManager consoleManager = new ConsoleManager(scanner, commandManager, validator);
+            consoleManager.executeConsole();
         }
     }
 }

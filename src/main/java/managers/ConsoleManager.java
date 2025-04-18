@@ -1,17 +1,55 @@
 package managers;
+import interfaces.Collectionable;
 import interfaces.Console;
 import managers.commands.Command;
+import models.Dragon;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class ConsoleManager implements Console{
     private Scanner scanner;
     private CommandManager commandManager;
-    public ConsoleManager(Scanner scanner, CommandManager commandManager){
+    private Validator validator;
+    private CollectionManager collectionManager = CollectionManager.getData();
+    public ConsoleManager(Scanner scanner, CommandManager commandManager, Validator validator){
         this.commandManager = commandManager;
         this.scanner = scanner;
+        this.validator = validator;
     }
-    public void execute(){
+    public Integer setId(){
+        Integer id = 0;
+        for(Dragon dragon: collectionManager.getCollection()){
+            id = Math.max(id, dragon.getId());
+        }
+        return id + 1;
+    }
+    public LocalDateTime setTime(){
+        return LocalDateTime.now();
+    }
+    public String inputFieldString(){
+        String curField = null;
+        if(scanner.hasNext()){
+            curField = scanner.nextLine().trim();
+        }
+        return curField;
+    }
+    public Integer inputFieldNumber(){
+        String curField = null;
+        if(scanner.hasNext()){
+            curField = scanner.nextLine().trim();
+        }
+        return Integer.parseInt(curField);
+    }
+    public Float inputFieldFloatNumber(){
+        String curField = null;
+        if(scanner.hasNext()){
+            curField = scanner.nextLine().trim();
+        }
+        return Float.parseFloat(curField);
+    }
+    @Override
+    public void executeConsole(){
         String curcmd;
         while(scanner.hasNext()){
             String line = scanner.nextLine().trim();

@@ -14,6 +14,7 @@ public class CommandManager implements Commandable<Command> {
     private static CommandManager commandManager;
     private CommandManager(){}
     static{
+        commands.put("ADD", new Add());
         commands.put("HELP", new Help());
         commands.put("INFO", new Info());
         commands.put("CLEAR", new Clear());

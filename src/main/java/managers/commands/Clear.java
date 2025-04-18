@@ -11,6 +11,5 @@ public class Clear extends Command {
     public void execute(){
         CollectionManager collectionManager = CollectionManager.getData();
         collectionManager.clear();
-        System.out.println("Коллекция очищена успешно!\n");
     }
 }

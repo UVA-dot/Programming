@@ -1,10 +1,7 @@
 package managers;
 
-import managers.commands.Command;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Script_manager {
@@ -16,8 +13,9 @@ public class Script_manager {
         try {
             Scanner scanner = new Scanner(this.file_name);
             CommandManager commandManager = CommandManager.getCommandManager();
-            ConsoleManager consoleManager = new ConsoleManager(scanner, commandManager);
-            consoleManager.execute();
+            Validator validator = new Validator();
+            ConsoleManager consoleManager = new ConsoleManager(scanner, commandManager, validator);
+            consoleManager.executeConsole();
         }
         catch(FileNotFoundException e){
             System.out.println("Файл со скриптом не был найден");

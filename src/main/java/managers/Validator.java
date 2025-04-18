@@ -6,18 +6,39 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Validator {
-    private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Integer age; //Значение поля должно быть больше 0, Поле не может быть null
-    private long weight; //Значение поля должно быть больше 0
-    private DragonType type; //Поле не может быть null
-    private DragonCharacter character; //Поле не может быть null
-    private DragonHead head;
-    public Dragon inputData(Scanner scanner){
-        Dragon dragon = new Dragon();
-        String line;
-        return dragon;
+    public Validator(){
+    }
+    public boolean validatingName(String name){
+        return name != null && !name.isEmpty();
+    }
+    public boolean validatingX(Long x){
+        return x <= 353;
+    }
+    public boolean validatingY(Integer y){
+        return y != null;
+    }
+    public boolean validatingAge(Integer age){
+        return age != null && age > 0;
+    }
+    public boolean validatingWeight(Long weight){
+        return weight > 0;
+    }
+    public boolean validatingType(String type){
+        boolean flag = false;
+        for(DragonType dragonType: DragonType.values()){
+            if(dragonType.toString().equals(type)){
+                flag = true;
+            }
+        }
+        return flag;
+    }
+    public boolean validatingChar(String character){
+        boolean flag = false;
+        for(DragonCharacter dragonCharacter: DragonCharacter.values()){
+            if(dragonCharacter.toString().equals(character)){
+                flag = true;
+            }
+        }
+        return flag;
     }
 }

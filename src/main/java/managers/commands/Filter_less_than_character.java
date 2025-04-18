@@ -10,15 +10,6 @@ public class Filter_less_than_character extends Command{
     @Override
     public void execute(String data){
         CollectionManager collectionManager = CollectionManager.getData();
-        boolean found = false;
-        for(Dragon dragon: collectionManager.getCollection()){
-            if(dragon.getCharacter() != null && dragon.getCharacter().ordinal() < Integer.parseInt(data)){
-                System.out.println(dragon.toString());
-                found = true;
-            }
-        }
-        if (!found){
-            System.out.println("Дракона с меньшим значением характера не найдено");
-        }
+        collectionManager.filter(data, collectionManager);
     }
 }

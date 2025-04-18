@@ -1,5 +1,5 @@
 package interfaces;
 
 public interface Console {
-    public void execute();
+    public void executeConsole();
 }

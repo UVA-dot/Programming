@@ -1,5 +1,9 @@
 package managers.commands;
 
+import managers.CollectionManager;
+import managers.Validator;
+import models.Dragon;
+
 import java.util.Scanner;
 
 public class Add extends Command {
@@ -9,6 +13,7 @@ public class Add extends Command {
     }
     @Override
     public void execute(Scanner scanner){
-
+        CollectionManager collectionManager = CollectionManager.getData();
+        collectionManager.add(scanner);
     }
 }

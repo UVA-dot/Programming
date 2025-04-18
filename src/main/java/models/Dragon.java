@@ -14,6 +14,23 @@ public class Dragon {
     private DragonCharacter character; //Поле не может быть null
     private DragonHead head;
     public Dragon(){}
+    public Dragon(String name,
+                  Coordinates coordinates,
+                  LocalDateTime creationdate,
+                  Integer age,
+                  long weight,
+                  DragonType type,
+                  DragonCharacter character,
+                  DragonHead head){
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationdate;
+        this.age = age;
+        this.weight = weight;
+        this.type = type;
+        this. character = character;
+        this.head = head;
+    }
     public Dragon(Integer id,
                   String name,
                   Coordinates coordinates,

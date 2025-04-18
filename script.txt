@@ -1,0 +1,4 @@
+show
+head
+remove_head
+filter 3

@@ -12,7 +12,7 @@ public class Filter_less_than_character extends Command{
         CollectionManager collectionManager = CollectionManager.getData();
         boolean found = false;
         for(Dragon dragon: collectionManager.getCollection()){
-            if(dragon.getCharacter() != null && dragon.getCharacter().ordinal() == Integer.parseInt(data)){
+            if(dragon.getCharacter() != null && dragon.getCharacter().ordinal() < Integer.parseInt(data)){
                 System.out.println(dragon.toString());
                 found = true;
             }

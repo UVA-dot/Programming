@@ -15,54 +15,9 @@ public class Script_manager {
     public void exec() {
         try {
             Scanner scanner = new Scanner(this.file_name);
-            while(scanner.hasNextLine()){
-                String line = scanner.nextLine();
-                if(!line.equalsIgnoreCase("EXIT")){
-                    String[] input = line.split(" ");
-                    String cmd = input[0];
-                    CommandManager commandManager = CommandManager.getCommandManager();
-                    Command getcomm = commandManager.getCommand(cmd);
-                    if(getcomm != null){
-                        commandManager.updateHistory(getcomm);
-                        boolean isArg = false;
-                        String arg = null;
-                        try{
-                            arg = input[1];
-                            isArg = true;
-                            getcomm.setScanner(scanner);
-                        }catch (ArrayIndexOutOfBoundsException e){
-
-                        }
-                        if(isArg){
-                            try{
-                                getcomm.execute(arg);
-                            }
-                            catch (ArrayIndexOutOfBoundsException e){
-                                System.out.println("Не указаны параметры для команды");
-                            }
-                        }
-                        else{
-                            try{
-                                if(getcomm.executeScanner()){
-                                    try {
-                                        getcomm.execute(scanner);
-                                    }catch(NoSuchElementException e){
-                                        System.out.println("Ошибка при исполнении команды, требующей ввода полей с информацией о персонаже. Проверьте правильность ввода полей в скрипте");
-                                    }
-                                }
-                                else{
-                                    getcomm.execute();
-                                }
-                            }catch(ArrayIndexOutOfBoundsException e){
-                                System.out.println("Не указаны параметры для команды");
-                            }
-                        }
-                    }
-                }
-                else{
-                    System.out.println("Команда не распознана");
-                }
-            }
+            CommandManager commandManager = CommandManager.getCommandManager();
+            ConsoleManager consoleManager = new ConsoleManager(scanner, commandManager);
+            consoleManager.execute();
         }
         catch(FileNotFoundException e){
             System.out.println("Файл со скриптом не был найден");

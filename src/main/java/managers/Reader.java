@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.io.IOException;
 import java.io.FileReader;
-public class Reader implements Readable {
+public class Reader implements Readable<Dragon> {
     private String name;
     Reader(){
         this.name = "";

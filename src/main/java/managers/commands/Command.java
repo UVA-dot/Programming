@@ -18,7 +18,7 @@ public abstract class Command {
     public String getDescription(){
         return description;
     }
-    public Scanner getScreen(){
+    public Scanner getScanner(){
         return scanner;
     }
     public void setScanner(Scanner scanner){

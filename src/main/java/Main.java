@@ -15,12 +15,12 @@ public class Main {
         }
         else{
             CollectionManager collectionManager = CollectionManager.getData();
-            LinkedList<Dragon> result = new LinkedList<>();
+            LinkedList<Dragon> result;
             String FilePath = args[0];
             Reader fileReader = new Reader(FilePath);
             result = fileReader.readCollection();
             collectionManager.setCollection(result);
-            System.out.println("\nПожалуйста введите команду");
+            System.out.println("Пожалуйста введите команду");
             commandloop();
         }
     }
@@ -30,8 +30,8 @@ public class Main {
         CommandManager commandManager = CommandManager.getCommandManager();
         while(scanner.hasNext()){
             String line = scanner.nextLine().trim();
-            if(!line.equals("")){
-                if(line.toUpperCase().equals("EXIT")) break;
+            if(!line.isEmpty()){
+                if(line.equalsIgnoreCase("EXIT")) break;
                 else{
                     String[] input = line.split(" ");
                     curcmd = input[0];
@@ -49,7 +49,8 @@ public class Main {
                             isArg = true;
                             cmd.setScanner(scanner);
                         }
-                        catch (ArrayIndexOutOfBoundsException e){}
+                        catch (ArrayIndexOutOfBoundsException e){
+                        }
                         if(isArg){
                             try{
                                 cmd.execute(args);

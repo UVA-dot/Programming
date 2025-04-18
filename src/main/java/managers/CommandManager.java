@@ -26,6 +26,9 @@ public class CommandManager implements Commandable<Command> {
         Command History = commands.put("HISTORY", new History());
         Command Max_by_weight = commands.put("MAX_BY_WEIGHT", new Max_by_weight());
         Command Group_counting_by_type = commands.put("GROUP_COUNTING_BY_TYPE", new Group_counting_by_type());
+        Command Save = commands.put("SAVE", new Save());
+        Command Execute_script = commands.put("EXECUTE_SCRIPT", new Execute_script());
+        Command Filter_less_than_character = commands.put("FILTER", new Filter_less_than_character());
     }
     @Override
     public HashMap<String, Command> getCommands(){
